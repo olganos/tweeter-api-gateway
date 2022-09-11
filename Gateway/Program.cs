@@ -44,6 +44,10 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapReverseProxy();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGet("", ctx => ctx.Response.WriteAsync("YAG"));
+    endpoints.MapReverseProxy();
+});
 
 app.Run();
